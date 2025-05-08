@@ -1,0 +1,18 @@
+name: 部署到 GitHub Pages
+
+on: [push]
+# 如果你想要进一步定义触发、路径以及其他内容，请检阅 Github Actions 文档
+# https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+jobs:
+  build:
+    name: 构建
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build
+
